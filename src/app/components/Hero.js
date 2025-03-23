@@ -114,29 +114,8 @@ Let&apos;s Connect and Collaborate!
           alt="Profile Image"
         />
       </motion.div>
-
-      <div className="absolute bottom-6 flex gap-6">
-      {icons.map((icon, index) => (
-        <motion.a
-          key={index}
-          href={`https://${icon.id}.com`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-900 shadow-lg hover:shadow-pink-500 transition-all cursor-pointer text-white text-2xl"
-          whileHover={{ scale: 1.2, rotate: 10 }}
-        >
-          {icon.component}
-        </motion.a>
-      ))}
-    </div>
     </section>
   );
 };
-
-const icons = [
-  { id: "facebook", component: <FaFacebook /> },
-  { id: "twitter", component: <FaTwitter /> },
-  { id: "github", component: <FaGithub /> },
-];
 
 export default HeroSection;
