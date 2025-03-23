@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Manish Kumar - Portfolio  
 
-## Getting Started
+This is a **Next.js** portfolio project showcasing my work, skills, and experience. Built with **modern web technologies**, it ensures a seamless and visually stunning experience.  
 
-First, run the development server:
+![image](https://github.com/user-attachments/assets/f3775e6b-16f5-4ab3-b75e-26b2cb5e71b2)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Features  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✅ **Next.js 14** - Fast & optimized performance  
+✅ **React & Tailwind CSS** - Beautiful and responsive UI  
+✅ **Framer Motion** - Smooth animations  
+✅ **SEO Optimized** - Ranks better on search engines  
+✅ **Dark Mode** - Eye-friendly experience  
+✅ **Fully Responsive** - Looks great on all devices  
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🚀 Getting Started  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Clone the repository:  
+```sh
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+``` 
 
-## Learn More
+## 📞 Contact  
 
-To learn more about Next.js, take a look at the following resources:
+📧 **Email:** [manishprajapati.cs1@gmail.com](mailto:manishprajapati.cs1@gmail.com)  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🌐 **Website:** [manishdev-my-portfolio.vercel.app](https://manishdev-my-portfolio.vercel.app)  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📌 **GitHub:** [ManishKumarCs](https://github.com/ManishKumarCs)  
 
-## Deploy on Vercel
+🔗 **LinkedIn:** [Manish Kumar](https://www.linkedin.com/in/manishkumarcs1)  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
