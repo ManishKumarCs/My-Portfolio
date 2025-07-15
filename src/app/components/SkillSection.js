@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Tooltip } from "react-tooltip"; // Ensure you install react-tooltip
 
 const skills = [
@@ -18,7 +19,7 @@ const skills = [
 
 const SkillSection = () => {
   return (
-    <div className="flex justify-center gap-6 flex-wrap mt-8 mb-40 mt-20">
+    <div className="flex justify-center gap-6 flex-wrap mb-40 mt-20">
       {skills.map((skill, index) => (
         <motion.div
           key={index}
@@ -30,7 +31,13 @@ const SkillSection = () => {
           transition={{ duration: 0.1, delay: index * 0.02 }}
           data-tooltip-id={`tooltip-${index}`}
         >
-          <img src={skill.icon} alt={skill.name} className="w-16 h-16 object-contain transition-transform duration-300" />
+          <Image
+  src={skill.icon}
+  alt={skill.name}
+  width={64}
+  height={64}
+  className="object-contain transition-transform duration-300"
+/>
           <Tooltip id={`tooltip-${index}`} place="top" effect="solid" className="bg-white text-black p-2 rounded-lg">
             {skill.name}
           </Tooltip>
