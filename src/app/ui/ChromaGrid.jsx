@@ -17,7 +17,7 @@ const ChromaGrid = ({
 
   const demo = [
     {
-      image: "/images/onboarding.png", // Make sure this image exists in your public/images folder
+      image: "/images/onboarding.png",
       title: "Onboarding Management System (OMS)",
       subtitle: "Manage onboarding, Tasks and more in one smart system.",
       handle: " ",
@@ -25,35 +25,34 @@ const ChromaGrid = ({
       gradient: "linear-gradient(200deg, #EC4899, #000)",
       url: "https://omsportal.manishdev.tech",
     },
-  {
-    image: "/images/swiftkart.png",
-    title: "SwiftKart",
-    subtitle: "An e-commerce platform for seamless shopping experience.",
-    handle: " ",
-    borderColor: "#4F46E5",
-    gradient: "linear-gradient(145deg,#4F46E5,#000)",
-    url: "https://swiftkart.netlify.app",
-  },
-  {
-    image: "/images/githubexplorer.png",
-    title: "GitHub Explorer",
-    subtitle: "A powerful tool to search and explore GitHub repositories and user profiles with ease.",
-    handle: " ",
-    borderColor: "#10B981",
-    gradient: "linear-gradient(210deg,#10B981,#000)",
-    url: "https://githubbexplorer.netlify.app",
-  },
-  {
-    image: "/images/insurance.png",
-    title: "Medical Insurance Cost Prediction",
-    subtitle: "ML-powered tool to predict medical insurance costs based on user details.",
-    handle: " ",
-    borderColor: "#F59E0B",
-    gradient: "linear-gradient(165deg,#F59E0B,#000)",
-    url: "https://medical-insurance-prediction-wvgfsrfxnhmkjca3gdvrn7.streamlit.app/",
-  },
-];
-
+    {
+      image: "/images/swiftkart.png",
+      title: "SwiftKart",
+      subtitle: "An e-commerce platform for seamless shopping experience.",
+      handle: " ",
+      borderColor: "#4F46E5",
+      gradient: "linear-gradient(145deg,#4F46E5,#000)",
+      url: "https://swiftkart.netlify.app",
+    },
+    {
+      image: "/images/githubexplorer.png",
+      title: "GitHub Explorer",
+      subtitle: "Search and explore GitHub repositories and user profiles.",
+      handle: " ",
+      borderColor: "#10B981",
+      gradient: "linear-gradient(210deg,#10B981,#000)",
+      url: "https://githubbexplorer.netlify.app",
+    },
+    {
+      image: "/images/insurance.png",
+      title: "Medical Insurance Cost Prediction",
+      subtitle: "ML-powered tool to predict medical insurance costs.",
+      handle: " ",
+      borderColor: "#F59E0B",
+      gradient: "linear-gradient(165deg,#F59E0B,#000)",
+      url: "https://medical-insurance-prediction-wvgfsrfxnhmkjca3gdvrn7.streamlit.app/",
+    },
+  ];
 
   const data = items?.length ? items : demo;
 
@@ -112,31 +111,26 @@ const ChromaGrid = ({
       ref={rootRef}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
-      className={`relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-20 mb-40 ${className}`}
-
-
-      style={
-        {
-          "--r": `${radius}px`,
-          "--x": "50%",
-          "--y": "50%",
-        }
-      }
+      className={`relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-20 mb-40 justify-center ${className}`}
+      style={{
+        "--r": `${radius}px`,
+        "--x": "50%",
+        "--y": "50%",
+      }}
     >
       {data.map((c, i) => (
         <article
           key={i}
           onMouseMove={handleCardMove}
           onClick={() => handleCardClick(c.url)}
-          className="group relative flex flex-col w-[300px] h-[300px] rounded-[20px] overflow-hidden border-2 p-1 border-transparent transition-colors duration-300 cursor-pointer"
-          style={
-            {
-              "--card-border": c.borderColor || "transparent",
-              background: c.gradient,
-              "--spotlight-color": "rgba(255,255,255,0.3)",
-            }
-          }
+          className="group relative flex flex-col w-[300px] max-w-[90vw] mx-auto h-[300px] rounded-[20px] overflow-hidden border-2 p-1 border-transparent transition-colors duration-300 cursor-pointer"
+          style={{
+            "--card-border": c.borderColor || "transparent",
+            background: c.gradient,
+            "--spotlight-color": "rgba(255,255,255,0.3)",
+          }}
         >
+          {/* Spotlight hover */}
           <div
             className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20 opacity-0 group-hover:opacity-100"
             style={{
@@ -155,19 +149,17 @@ const ChromaGrid = ({
           <footer className="relative z-10 px-2 text-white font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1">
             <h3 className="m-0 text-[1.05rem] font-semibold">{c.title}</h3>
             {c.handle && (
-              <span className="text-[0.95rem] opacity-80 text-right">
-                {c.handle}
-              </span>
+              <span className="text-[0.95rem] opacity-80 text-right">{c.handle}</span>
             )}
             <p className="m-0 text-[0.85rem] opacity-85">{c.subtitle}</p>
             {c.location && (
-              <span className="text-[0.85rem] opacity-85 text-right">
-                {c.location}
-              </span>
+              <span className="text-[0.85rem] opacity-85 text-right">{c.location}</span>
             )}
           </footer>
         </article>
       ))}
+
+      {/* Glow overlay */}
       <div
         className="absolute inset-0 pointer-events-none z-30"
         style={{
@@ -180,6 +172,8 @@ const ChromaGrid = ({
             "radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)",
         }}
       />
+
+      {/* Fade in/out overlay */}
       <div
         ref={fadeRef}
         className="absolute inset-0 pointer-events-none transition-opacity duration-[250ms] z-40"

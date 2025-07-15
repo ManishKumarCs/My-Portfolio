@@ -12,12 +12,11 @@ const roles = [
   "MACHINE LEARNING ENTHUSIAST",
 ];
 
-
 const HeroSection = () => {
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const typingSpeed = 100; 
+  const typingSpeed = 100;
 
   useEffect(() => {
     if (charIndex < roles[index].length) {
@@ -30,14 +29,18 @@ const HeroSection = () => {
       setTimeout(() => {
         setText("");
         setCharIndex(0);
-        setIndex((prev) => (prev + 1) % roles.length); 
-      }, 2000); 
+        setIndex((prev) => (prev + 1) % roles.length);
+      }, 2000);
     }
   }, [charIndex, index]);
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 md:px-20 bg-[#0a0a0a] text-white relative" id="home">
-      <div className="max-w-lg text-center md:text-left space-y-5 md:ml-10 md:mr-20 mt-24 md:mt-8">
+    <section
+      className="flex flex-col-reverse md:flex-row items-center justify-center min-h-screen px-6 md:px-20 bg-[#0a0a0a] text-white relative"
+      id="home"
+    >
+      {/* Text Content */}
+      <div className="max-w-lg text-center md:text-left space-y-5 md:ml-10 md:mr-20 mt-10 md:mt-8">
         <motion.h3
           className="text-lg md:text-xl font-semibold text-gray-300"
           initial={{ opacity: 0, x: -50 }}
@@ -55,24 +58,30 @@ const HeroSection = () => {
           MANISH KUMAR
         </motion.h1>
         <motion.h2
-        className="text-xl md:text-2xl font-medium"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-xl md:text-2xl font-medium"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           {text}
-       <span className="animate-pulse">|</span>
-      </motion.h2>
+          <span className="animate-pulse">|</span>
+        </motion.h2>
         <motion.p
           className="text-gray-400 leading-relaxed"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          I build visually appealing, high-performance web applications that combine great design with robust functionality. With strong skills in full-stack development (React, Next.js, Node.js) and deep knowledge of Data Structures & Algorithms, I engineer solutions that are not just scalable but optimized for performance. Whether it&apos;s creating seamless user experiences or solving complex coding problems, I bring ideas to life with clean, efficient, and impactful code 🚀
+          I build visually appealing, high-performance web applications that
+          combine great design with robust functionality. With strong skills in
+          full-stack development (React, Next.js, Node.js) and deep knowledge of
+          Data Structures & Algorithms, I engineer solutions that are not just
+          scalable but optimized for performance. Whether it&apos;s creating
+          seamless user experiences or solving complex coding problems, I bring
+          ideas to life with clean, efficient, and impactful code 🚀
         </motion.p>
 
-        {/* Skills Animation */}
+        {/* Skills */}
         <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-4">
           {skills.map((skill, index) => (
             <motion.span
@@ -86,21 +95,28 @@ const HeroSection = () => {
             </motion.span>
           ))}
         </div>
-        <motion.button
-  className="mt-6 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-lg font-medium transition-transform transform hover:scale-110 shadow-lg cursor-pointer"
-  whileHover={{ scale: 1 }}
-  whileTap={{ scale: 0.75 }}
-  initial={{ opacity: 0, x: -50 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.6, delay: 0.3 }}
-  onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
->
-Let&apos;s Connect and Collaborate!
-</motion.button>
 
+        {/* Button */}
+        <motion.button
+          className="mt-6 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-lg font-medium transition-transform transform hover:scale-110 shadow-lg cursor-pointer"
+          whileHover={{ scale: 1 }}
+          whileTap={{ scale: 0.75 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          onClick={() =>
+            document
+              .querySelector("#contact")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Let&apos;s Connect and Collaborate!
+        </motion.button>
       </div>
+
+      {/* Image */}
       <motion.div
-        className="relative mt-10 md:mt-0 flex justify-center md:justify-end md:mr-10"
+        className="relative mb-8 md:mb-0 flex justify-center md:justify-end md:mr-10"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
@@ -110,7 +126,7 @@ Let&apos;s Connect and Collaborate!
           src="/images/profile.jpeg"
           width={350}
           height={350}
-          className="relative rounded-full shadow-lg transition-all"
+          className="relative rounded-full shadow-lg transition-all mt-20"
           alt="Profile Image"
         />
       </motion.div>
