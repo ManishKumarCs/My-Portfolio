@@ -36,7 +36,7 @@ const HeroSection = () => {
   }, [charIndex, index]);
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 md:px-20 bg-[#0a0a0a] text-white relative">
+    <section className="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 md:px-20 bg-[#0a0a0a] text-white relative" id="home">
       <div className="max-w-lg text-center md:text-left space-y-5 md:ml-10 md:mr-20 mt-24 md:mt-8">
         <motion.h3
           className="text-lg md:text-xl font-semibold text-gray-300"

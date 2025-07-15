@@ -22,32 +22,37 @@ const About = () => {
         <h2 className="text-4xl font-bold text-pink-500">About Me</h2>
 
         <p className="mt-4 text-lg leading-relaxed">
-          Hi, I&apos;m <span className="font-semibold text-pink-400">Manish Kumar</span>, a passionate{" "}
-          <span className="font-semibold text-pink-400">Full-Stack Developer</span> and{" "}
-          <strong>Machine Learning Enthusiast</strong>.
+          I'm <span className="text-pink-400 font-semibold">Manish Kumar</span>, a passionate{" "}
+          <span className="text-pink-400 font-semibold">Full Stack Developer</span> and{" "}
+          <span className="text-pink-400 font-semibold">AI enthusiast</span> focused on real-world solutions.
         </p>
 
         <p className="mt-3 text-lg leading-relaxed">
-          I specialize in <span className="font-semibold text-pink-400">building high-performance web applications</span> 
-          using <span className="font-semibold text-pink-400">React, Next.js, Node.js, and MongoDB</span>, while also exploring{" "}
-          <span className="font-semibold text-pink-400">AI-powered solutions</span>.
+          🔐 Built <span className="text-pink-400 font-semibold">Onboarding Management System</span> — a smart HR portal to manage onboarding, tasks, and communication in one place.
         </p>
 
         <p className="mt-3 text-lg leading-relaxed">
-          With a strong foundation in <span className="font-semibold text-pink-400">data structures, algorithms, and problem-solving</span>, 
-          I aim to create <span className="font-semibold text-pink-400">scalable, optimized, and user-friendly</span> digital experiences. 
-          Currently, I&apos;m working on <span className="font-semibold text-pink-400">SkillUp</span>, an AI-powered personalized learning platform, 
-          and have led projects like <span className="font-semibold text-pink-400">SwiftKart (E-commerce)</span> and <span className="font-semibold text-pink-400">GitHub Explorer</span>.
+          💡 Developing <span className="text-pink-400 font-semibold">SkillUp</span> — an{" "}
+          <span className="text-pink-400 font-semibold">AI-powered learning platform</span> offering personalized learning paths and guidance using GPT tech.
         </p>
 
         <p className="mt-3 text-lg leading-relaxed">
-          I&apos;m always excited to collaborate, innovate, and push the boundaries of{" "}
-          <span className="font-semibold text-pink-400">technology & creativity</span>.  
-          Let&apos;s connect and build something amazing together! 🚀
+          I’ve also built <span className="text-pink-400 font-semibold">SwiftKart</span> (e-commerce),{" "}
+          <span className="text-pink-400 font-semibold">GitHub Explorer</span>, and a{" "}
+          <span className="text-pink-400 font-semibold">Medical Insurance Predictor</span> using ML.
+        </p>
+
+        <p className="mt-3 text-lg leading-relaxed">
+          I work with <span className="text-pink-400 font-semibold">React, Next.js, Node.js, MongoDB</span>, and{" "}
+          <span className="text-pink-400 font-semibold">AI tools</span> to create fast and scalable apps.
+        </p>
+
+        <p className="mt-3 text-lg leading-relaxed">
+          Let’s collaborate and build something impactful together. 🚀
         </p>
       </motion.div>
 
-      {/* Buttons with Slide-in Animation */}
+      {/* CV Button */}
       <motion.div
         className="mt-6 flex gap-4"
         initial={{ opacity: 0, y: 50 }}
@@ -55,7 +60,7 @@ const About = () => {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
       >
         <a
-          href="documents/resume.pdf"
+          href="/documents/resume.pdf"
           download="Manish_Kumar_Resume.pdf"
           className="px-6 py-3 text-lg font-semibold bg-pink-500 rounded-lg shadow-lg hover:bg-pink-600 transition"
         >

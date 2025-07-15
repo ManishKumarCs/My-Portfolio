@@ -1,58 +1,32 @@
 "use client";
-import { useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion"; 
-import { Menu, X } from "lucide-react"; 
-import Image from "next/image";
+
+import React, { useState } from "react";
+
+const navItems = ["Home", "Achievements", "About", "Contact"];
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("Home");
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-lg text-white shadow-md z-50">
-      <div className="container mx-auto flex justify-between items-center py-3 px-4">
-        <div className="container mx-auto flex justify-between items-center py-1 px-1">
-        <Link href="/">
-          <div
-            className="cursor-pointer"
+    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center font-[var(--font-poppins)]">
+      <nav className="flex gap-4 px-4 py-2 rounded-full 
+        bg-black/60 backdrop-blur-lg shadow-xl border border-white/10">
+        {navItems.map((item) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            onClick={() => setActive(item)}
+            className={`px-5 py-2 text-base font-semibold rounded-full transition-all duration-300 transform tracking-wide
+              ${
+                active === item
+                  ? "bg-pink-500 text-white backdrop-blur-sm scale-105 shadow-md"
+                  : "text-white border border-transparent hover:border-pink-500 hover:bg-pink-500 hover:backdrop-blur-sm hover:text-white hover:scale-105"
+              }`}
           >
-            <Image
-              src="/images/logo1.png"
-              alt="Manish.Dev Logo"
-              width={150} 
-              height={50} 
-              priority
-            />
-          </div>
-        </Link>
-      </div>
-
-        <button
-          className="text-3xl md:hidden focus:outline-none"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={30} /> : <Menu size={30} />}
-        </button>
-
-        <motion.nav
-          initial={{ opacity: 0, x: "-100%" }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-gray-900 md:bg-transparent shadow-lg md:shadow-none md:flex md:space-x-6 ${
-            menuOpen ? "block" : "hidden md:flex"
-          }`}
-        >
-          {["Home", "About", "Achievements", "Contact"].map((item, index) => (
-            <Link
-              key={index}
-              href={`#${item.toLowerCase()}`}
-              className="block md:inline-block py-3 px-6 text-lg font-medium transition-all hover:text-pink-500 hover:scale-105"
-            >
-              {item}
-            </Link>
-          ))}
-        </motion.nav>
-      </div>
+            {item}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 };

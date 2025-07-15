@@ -18,11 +18,11 @@ const skills = [
 
 const SkillSection = () => {
   return (
-    <div className="flex justify-center gap-6 flex-wrap mt-8">
+    <div className="flex justify-center gap-6 flex-wrap mt-8 mb-40 mt-20">
       {skills.map((skill, index) => (
         <motion.div
           key={index}
-          className="bg-gray-900 rounded-2xl p-4 w-28 h-28 flex items-center justify-center shadow-lg cursor-pointer relative overflow-hidden"
+          className="bg-gray-900 rounded-2xl p-4 w-20 h-20 flex items-center justify-center shadow-lg cursor-pointer relative overflow-hidden"
           whileHover={{ scale: 1.15, boxShadow: "0px 5px 25px rgba(255, 255, 255, 0.6)", rotate: 5 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0, y: 20 }}
