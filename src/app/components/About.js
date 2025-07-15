@@ -22,7 +22,7 @@ const About = () => {
         <h2 className="text-4xl font-bold text-pink-500">About Me</h2>
 
         <p className="mt-4 text-lg leading-relaxed">
-          I'm <span className="text-pink-400 font-semibold">Manish Kumar</span>, a passionate{" "}
+          I&apos;m <span className="text-pink-400 font-semibold">Manish Kumar</span>, a passionate{" "}
           <span className="text-pink-400 font-semibold">Full Stack Developer</span> and{" "}
           <span className="text-pink-400 font-semibold">AI enthusiast</span> focused on real-world solutions.
         </p>
@@ -37,7 +37,7 @@ const About = () => {
         </p>
 
         <p className="mt-3 text-lg leading-relaxed">
-          I’ve also built <span className="text-pink-400 font-semibold">SwiftKart</span> (e-commerce),{" "}
+          I&apos;ve also built <span className="text-pink-400 font-semibold">SwiftKart</span> (e-commerce),{" "}
           <span className="text-pink-400 font-semibold">GitHub Explorer</span>, and a{" "}
           <span className="text-pink-400 font-semibold">Medical Insurance Predictor</span> using ML.
         </p>
@@ -48,7 +48,7 @@ const About = () => {
         </p>
 
         <p className="mt-3 text-lg leading-relaxed">
-          Let’s collaborate and build something impactful together. 🚀
+          Let&apos;s collaborate and build something impactful together. 🚀
         </p>
       </motion.div>
 

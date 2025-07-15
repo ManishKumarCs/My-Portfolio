@@ -69,7 +69,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          Craft visually stunning, high-performing websites that not only stand out but also rank higher. With expertise in cutting-edge design, seamless functionality, and problem-solving, I build efficient, scalable, and user-friendly digital experiences. Let’s bring your vision to life with innovation and precision! ✨
+          I build visually appealing, high-performance web applications that combine great design with robust functionality. With strong skills in full-stack development (React, Next.js, Node.js) and deep knowledge of Data Structures & Algorithms, I engineer solutions that are not just scalable but optimized for performance. Whether it's creating seamless user experiences or solving complex coding problems, I bring ideas to life with clean, efficient, and impactful code 🚀
         </motion.p>
 
         {/* Skills Animation */}
