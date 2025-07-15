@@ -1,39 +1,13 @@
+// components/HeroSection.jsx
 "use client";
-import { FaFacebook, FaTwitter, FaGithub } from "react-icons/fa";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import TypingRole from "./TypingRole";
 
 const skills = ["Java", "Node.js", "React.js", "JavaScript", "Next.js"];
-const roles = [
-  "FULL STACK WEB DEVELOPER",
-  "AI INNOVATOR & PROBLEM SOLVER",
-  "TECHNOLOGY ENTHUSIAST & CREATOR",
-  "MACHINE LEARNING ENTHUSIAST",
-];
 
-const HeroSection = () => {
-  const [text, setText] = useState("");
-  const [index, setIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const typingSpeed = 100;
-
-  useEffect(() => {
-    if (charIndex < roles[index].length) {
-      const timeout = setTimeout(() => {
-        setText((prev) => prev + roles[index][charIndex]);
-        setCharIndex(charIndex + 1);
-      }, typingSpeed);
-      return () => clearTimeout(timeout);
-    } else {
-      setTimeout(() => {
-        setText("");
-        setCharIndex(0);
-        setIndex((prev) => (prev + 1) % roles.length);
-      }, 2000);
-    }
-  }, [charIndex, index]);
-
+export default function HeroSection() {
   return (
     <section
       className="flex flex-col-reverse md:flex-row items-center justify-center min-h-screen px-6 md:px-20 bg-[#0a0a0a] text-white relative"
@@ -49,6 +23,7 @@ const HeroSection = () => {
         >
           Hello, it&apos;s Me
         </motion.h3>
+
         <motion.h1
           className="text-4xl md:text-5xl font-bold text-pink-500"
           initial={{ opacity: 0, y: -30 }}
@@ -57,15 +32,17 @@ const HeroSection = () => {
         >
           MANISH KUMAR
         </motion.h1>
+
         <motion.h2
-          className="text-xl md:text-2xl font-medium"
+          className="text-xl md:text-2xl font-medium relative"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          {text}
-          <span className="animate-pulse">|</span>
+          <span className="sr-only">FULL STACK WEB DEVELOPER</span>
+          <TypingRole />
         </motion.h2>
+
         <motion.p
           className="text-gray-400 leading-relaxed"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -96,7 +73,7 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* Button */}
+        {/* CTA */}
         <motion.button
           className="mt-6 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-lg font-medium transition-transform transform hover:scale-110 shadow-lg cursor-pointer"
           whileHover={{ scale: 1 }}
@@ -127,11 +104,9 @@ const HeroSection = () => {
           width={350}
           height={350}
           className="relative rounded-full shadow-lg transition-all mt-20"
-          alt="Profile Image"
+          alt="Manish Kumar Profile Image"
         />
       </motion.div>
     </section>
   );
-};
-
-export default HeroSection;
+}

@@ -39,7 +39,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] from-[#0a0a33] to-[#1a1a5e] text-white px-6 pt-24">
+    <section id="contact" className="min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] from-[#0a0a33] to-[#1a1a5e] text-white px-6 py-24">
   {/* Section Heading */}
   <h2 className="text-4xl font-bold text-pink-500 mb-12">Contact Me</h2>
 
