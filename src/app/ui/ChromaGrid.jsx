@@ -1,193 +1,102 @@
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
 
-const ChromaGrid = ({
-  items,
-  className = "",
-  radius = 300,
-  damping = 0.45,
-  fadeOut = 0.6,
-  ease = "power3.out",
-}) => {
-  const rootRef = useRef(null);
-  const fadeRef = useRef(null);
-  const setX = useRef(null);
-  const setY = useRef(null);
-  const pos = useRef({ x: 0, y: 0 });
-
+const ChromaGrid = ({ items, className = "" }) => {
   const demo = [
     {
       image: "/images/onboarding.png",
       title: "Onboarding Management System (OMS)",
-      subtitle: "Manage onboarding, Tasks and more in one smart system.",
-      handle: " ",
-      borderColor: "#EC4899",
-      gradient: "linear-gradient(200deg, #EC4899, #000)",
+      subtitle: "Manage onboarding, tasks, and internal communication.",
       url: "https://omsportal.manishdev.tech",
+      tags: ["Next.js", "MongoDB", "Auth"],
     },
     {
       image: "/images/swiftkart.png",
       title: "SwiftKart",
-      subtitle: "An e-commerce platform for seamless shopping experience.",
-      handle: " ",
-      borderColor: "#4F46E5",
-      gradient: "linear-gradient(145deg,#4F46E5,#000)",
+      subtitle: "A modern e-commerce app with full-stack architecture.",
       url: "https://swiftkart.netlify.app",
+      tags: ["React", "Node.js", "MongoDB"],
     },
     {
       image: "/images/githubexplorer.png",
       title: "GitHub Explorer",
-      subtitle: "Search and explore GitHub repositories and user profiles.",
-      handle: " ",
-      borderColor: "#10B981",
-      gradient: "linear-gradient(210deg,#10B981,#000)",
+      subtitle: "Search and explore GitHub user profiles & repos.",
       url: "https://githubbexplorer.netlify.app",
+      tags: ["React", "REST API"],
     },
     {
       image: "/images/insurance.png",
       title: "Medical Insurance Cost Prediction",
-      subtitle: "ML-powered tool to predict medical insurance costs.",
-      handle: " ",
-      borderColor: "#F59E0B",
-      gradient: "linear-gradient(165deg,#F59E0B,#000)",
+      subtitle: "ML-powered tool to predict medical insurance premiums.",
       url: "https://medical-insurance-prediction-wvgfsrfxnhmkjca3gdvrn7.streamlit.app/",
+      tags: ["Python", "ML", "Streamlit"],
+    },
+    {
+      image: "/images/job-tracker.png", // Add a placeholder image for now
+      title: "Smart Job Application Tracker",
+      subtitle: "Track job applications, status, and interviews — all in one place.",
+      comingSoon: true,
+      tags: ["Next.js", "Firebase", "Dashboard"],
     },
   ];
 
   const data = items?.length ? items : demo;
 
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-    setX.current = gsap.quickSetter(el, "--x", "px");
-    setY.current = gsap.quickSetter(el, "--y", "px");
-    const { width, height } = el.getBoundingClientRect();
-    pos.current = { x: width / 2, y: height / 2 };
-    setX.current(pos.current.x);
-    setY.current(pos.current.y);
-  }, []);
-
-  const moveTo = (x, y) => {
-    gsap.to(pos.current, {
-      x,
-      y,
-      duration: damping,
-      ease,
-      onUpdate: () => {
-        setX.current?.(pos.current.x);
-        setY.current?.(pos.current.y);
-      },
-      overwrite: true,
-    });
-  };
-
-  const handleMove = (e) => {
-    const r = rootRef.current.getBoundingClientRect();
-    moveTo(e.clientX - r.left, e.clientY - r.top);
-    gsap.to(fadeRef.current, { opacity: 0, duration: 0.25, overwrite: true });
-  };
-
-  const handleLeave = () => {
-    gsap.to(fadeRef.current, {
-      opacity: 1,
-      duration: fadeOut,
-      overwrite: true,
-    });
-  };
-
-  const handleCardClick = (url) => {
+  const handleCardClick = (url, comingSoon) => {
+    if (comingSoon) return;
     if (url) window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  const handleCardMove = (e) => {
-    const c = e.currentTarget;
-    const rect = c.getBoundingClientRect();
-    c.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-    c.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
-  };
-
   return (
-    <div
-      ref={rootRef}
-      onPointerMove={handleMove}
-      onPointerLeave={handleLeave}
-      className={`relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-20 mb-40 justify-center ${className}`}
-      style={{
-        "--r": `${radius}px`,
-        "--x": "50%",
-        "--y": "50%",
-      }}
-    >
-      {data.map((c, i) => (
-        <article
-          key={i}
-          onMouseMove={handleCardMove}
-          onClick={() => handleCardClick(c.url)}
-          className="group relative flex flex-col w-[300px] max-w-[90vw] mx-auto h-[300px] rounded-[20px] overflow-hidden border-2 p-1 border-transparent transition-colors duration-300 cursor-pointer"
-          style={{
-            "--card-border": c.borderColor || "transparent",
-            background: c.gradient,
-            "--spotlight-color": "rgba(255,255,255,0.3)",
-          }}
+    <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6 mb-20 ${className}`}>
+      {data.map((card, index) => (
+        <motion.div
+          key={index}
+          onClick={() => handleCardClick(card.url, card.comingSoon)}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className={`group cursor-pointer relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10 backdrop-blur-xl shadow-lg transition-all 
+            ${card.comingSoon ? "pointer-events-none grayscale opacity-50" : "hover:shadow-pink-500/30"}
+          `}
         >
-          {/* Spotlight hover */}
-          <div
-            className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20 opacity-0 group-hover:opacity-100"
-            style={{
-              background:
-                "radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%)",
-            }}
+          {/* Project image */}
+          <img
+            src={card.image}
+            alt={card.title}
+            className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="relative z-10 flex-1 p-[10px] box-border">
-            <img
-              src={c.image}
-              alt={c.title}
-              loading="lazy"
-              className="w-full h-full object-cover rounded-[10px]"
-            />
+
+          {/* Overlay Glow */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent pointer-events-none" />
+
+          {/* "Coming Soon" badge */}
+          {card.comingSoon && (
+            <div className="absolute top-2 right-2 bg-red-200 text-black text-xs px-2 py-1 rounded-full font-semibold z-10">
+              Coming Soon
+            </div>
+          )}
+
+          {/* Content */}
+          <div className="p-5 relative z-10">
+            <h3 className="text-lg font-semibold text-white">{card.title}</h3>
+            <p className="text-sm text-gray-400 mt-1 mb-3">{card.subtitle}</p>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2">
+              {card.tags?.map((tag, i) => (
+                <span
+                  key={i}
+                  className="text-xs bg-white/10 text-pink-300 px-2 py-1 rounded-full backdrop-blur-sm border border-white/10"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
           </div>
-          <footer className="relative z-10 px-2 text-white font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1">
-            <h3 className="m-0 text-[1.05rem] font-semibold">{c.title}</h3>
-            {c.handle && (
-              <span className="text-[0.95rem] opacity-80 text-right">{c.handle}</span>
-            )}
-            <p className="m-0 text-[0.85rem] opacity-85">{c.subtitle}</p>
-            {c.location && (
-              <span className="text-[0.85rem] opacity-85 text-right">{c.location}</span>
-            )}
-          </footer>
-        </article>
+        </motion.div>
       ))}
-
-      {/* Glow overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none z-30"
-        style={{
-          backdropFilter: "grayscale(1) brightness(0.78)",
-          WebkitBackdropFilter: "grayscale(1) brightness(0.78)",
-          background: "rgba(0,0,0,0.001)",
-          maskImage:
-            "radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)",
-          WebkitMaskImage:
-            "radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)",
-        }}
-      />
-
-      {/* Fade in/out overlay */}
-      <div
-        ref={fadeRef}
-        className="absolute inset-0 pointer-events-none transition-opacity duration-[250ms] z-40"
-        style={{
-          backdropFilter: "grayscale(1) brightness(0.78)",
-          WebkitBackdropFilter: "grayscale(1) brightness(0.78)",
-          background: "rgba(0,0,0,0.001)",
-          maskImage:
-            "radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)",
-          opacity: 1,
-        }}
-      />
     </div>
   );
 };

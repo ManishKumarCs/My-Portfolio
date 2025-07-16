@@ -1,5 +1,6 @@
+"use client";
 import { motion } from "framer-motion";
-import { Tooltip } from "react-tooltip"; // Make sure react-tooltip is installed
+import { Tooltip } from "react-tooltip";
 
 const skills = [
   { name: "ReactJS", icon: "https://vectorseek.com/wp-content/uploads/2023/08/React-Logo-Vector.svg-.png" },
@@ -18,38 +19,43 @@ const skills = [
 
 const SkillSection = () => {
   return (
-    <div className="flex justify-center gap-6 flex-wrap mt-20 mb-40">
-      {skills.map((skill, index) => (
-        <motion.div
-          key={index}
-          className="bg-gray-900 rounded-2xl p-4 w-20 h-20 flex items-center justify-center shadow-lg cursor-pointer relative overflow-hidden"
-          whileHover={{
-            scale: 1.15,
-            boxShadow: "0px 5px 25px rgba(255, 255, 255, 0.6)",
-            rotate: 5,
-          }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.1, delay: index * 0.02 }}
-          data-tooltip-id={`tooltip-${index}`}
-        >
-          <img
-            src={skill.icon}
-            alt={skill.name}
-            className="w-16 h-16 object-contain transition-transform duration-300"
-          />
-          <Tooltip
-            id={`tooltip-${index}`}
-            place="top"
-            effect="solid"
-            className="bg-white text-black p-2 rounded-lg"
-          >
-            {skill.name}
-          </Tooltip>
-        </motion.div>
-      ))}
-    </div>
+    <section className="relative z-10 mt-16 mb-32 px-6 sm:px-12">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-pink-500 mb-20">
+          My Tech Stack
+        </h2>
+
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 place-items-center">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-xl w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center cursor-pointer group transition-all"
+              whileHover={{
+                scale: 1.15,
+                rotate: 5,
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+              data-tooltip-id={`tooltip-${index}`}
+            >
+              <img
+                src={skill.icon}
+                alt={skill.name}
+                className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+              />
+              <Tooltip
+                id={`tooltip-${index}`}
+                place="top"
+                className="bg-white text-black px-3 py-2 rounded-md text-sm shadow-md"
+              >
+                {skill.name}
+              </Tooltip>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
