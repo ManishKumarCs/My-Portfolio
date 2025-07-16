@@ -95,9 +95,10 @@ export default function RootLayout({ children }) {
   />
 </head>
 
-      <body className="...">
-        {children}
-      </body>
+      <body className="">
+  {children}
+</body>
+
     </html>
   );
 }

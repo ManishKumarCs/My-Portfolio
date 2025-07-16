@@ -29,15 +29,12 @@ export default function Portfolio() {
       {/* Skills Section */}
       <div className="relative my-10">
         <div className="absolute -top-32 -left-32 w-[300px] h-[300px] bg-[#0ff]/10 blur-[100px] rounded-full pointer-events-none z-0" />
-        <SkillSection />
+        {/* <SkillSection /> */}
       </div>
 
       {/* Projects Section */}
-      <div className="relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/10 blur-[120px] rounded-full -z-10" />
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-pink-500 mb-12 relative z-10">My Projects</h2>
         <ChromaGrid />
-      </div>
 
       {/* Education & Experience */}
       <section id="experience" className="relative bg-[#0a0a0a] text-white py-16 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden">
@@ -131,18 +128,19 @@ export default function Portfolio() {
                 />
 
                 <div className="relative z-10">
-                  <div className="w-full h-[200px] overflow-hidden flex items-center justify-center bg-black/10 rounded-md">
-                    <Image
-                      src={cert.image}
-                      alt={cert.title}
-                      width={300}
-                      height={200}
-                      className="object-contain w-full h-full rounded-md"
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mt-4">{cert.title}</h3>
-                  <p className="text-sm text-gray-400 mt-1">{cert.provider}</p>
-                </div>
+  <div className="w-full h-[200px] relative overflow-hidden flex items-center justify-center bg-black/10 rounded-md">
+    <Image
+      src={cert.image}
+      alt={cert.title}
+      fill
+      className="object-contain rounded-md"
+      sizes="(max-width: 768px) 100vw, 300px"
+    />
+  </div>
+  <h3 className="text-lg font-semibold text-white mt-4">{cert.title}</h3>
+  <p className="text-sm text-gray-400 mt-1">{cert.provider}</p>
+</div>
+
               </div>
             ))}
           </div>

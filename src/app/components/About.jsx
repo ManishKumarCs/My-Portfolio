@@ -10,7 +10,7 @@ const About = () => {
     <section
   id="about"
   ref={ref}
-  className="relative min-h-screen flex flex-col items-center justify-center text-center bg-[#0a0a0a] text-white px-6 pt-20 overflow-hidden"
+  className="relative min-h-screen flex flex-col items-center justify-center text-center bg-[#0a0a0a] text-white px-6 py-20 overflow-hidden "
 >
   {/* 🌟 Soft Background Glow Elements */}
   <div className="absolute top-[-100px] left-[50%] -translate-x-1/2 w-[400px] h-[400px] bg-pink-500/10 blur-[80px] rounded-full pointer-events-none" />

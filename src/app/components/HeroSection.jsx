@@ -99,12 +99,14 @@ export default function HeroSection() {
       >
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 blur-3xl w-[250px] h-[250px] md:w-[350px] md:h-[350px] animate-pulse" />
         <Image
-          src="/images/profile.jpeg"
-          width={350}
-          height={350}
-          className="relative rounded-full shadow-lg transition-all mt-20"
-          alt="Manish Kumar Profile Image"
-        />
+  src="/images/profile.jpeg"
+  width={350}
+  height={350}
+  className="relative rounded-full shadow-lg transition-all mt-20"
+  alt="Manish Kumar Profile Image"
+  priority
+/>
+
       </motion.div>
     </section>
   );

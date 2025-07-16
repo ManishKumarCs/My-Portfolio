@@ -12,6 +12,7 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleToggle = () => setIsOpen(!isOpen);
+
   const handleLinkClick = (item) => {
     setActive(item);
     setIsOpen(false);
@@ -39,17 +40,16 @@ const Header = () => {
     <header
       className={`transition-transform duration-300 ease-in-out ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } fixed top-4 left-0 right-0 z-50 flex justify-center font-[var(--font-poppins)] px-4`}
+      } fixed top-4 left-0 right-0 z-50 flex justify-center px-4 font-[var(--font-poppins)]`}
     >
       {/* Desktop Nav */}
-      <nav className="hidden md:flex gap-4 px-4 py-2 rounded-full 
-        bg-black/60 backdrop-blur-lg shadow-xl border border-white/10">
+      <nav className="hidden md:flex gap-4 px-4 py-2 rounded-full bg-black/60 backdrop-blur-lg shadow-xl border border-white/10">
         {navItems.map((item) => (
           <a
             key={item}
             href={`#${item.toLowerCase()}`}
             onClick={() => handleLinkClick(item)}
-            className={`px-5 py-2 text-base font-semibold rounded-full transition-all duration-300 transform tracking-wide
+            className={`px-5 py-2 text-base font-semibold rounded-full transition-all duration-300 tracking-wide transform
               ${
                 active === item
                   ? "bg-pink-500 text-white backdrop-blur-sm scale-105 shadow-md"
@@ -62,7 +62,7 @@ const Header = () => {
       </nav>
 
       {/* Mobile Nav Toggle */}
-      <div className="md:hidden bg-black/60 backdrop-blur-lg px-4 py-2 rounded-full border border-white/10 shadow-xl w-full flex justify-between items-center">
+      <div className="md:hidden w-full max-w-[95vw] bg-black/60 backdrop-blur-lg px-4 py-2 rounded-full border border-white/10 shadow-xl flex justify-between items-center">
         <span className="text-white font-semibold text-lg">{active}</span>
         <button onClick={handleToggle} className="text-white">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -71,14 +71,14 @@ const Header = () => {
 
       {/* Mobile Nav Dropdown */}
       {isOpen && (
-        <div className="absolute top-16 left-4 right-4 bg-black/80 backdrop-blur-lg rounded-xl border border-white/10 shadow-xl z-40 md:hidden">
-          <ul className="flex flex-col items-center py-2">
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 w-[90vw] max-w-sm bg-black/80 backdrop-blur-lg rounded-xl border border-white/10 shadow-xl z-40 md:hidden">
+          <ul className="flex flex-col items-center py-2 w-full">
             {navItems.map((item) => (
-              <li key={item} className="w-full text-center">
+              <li key={item} className="w-full">
                 <a
                   href={`#${item.toLowerCase()}`}
                   onClick={() => handleLinkClick(item)}
-                  className={`block w-full py-3 px-6 text-base font-semibold transition-all duration-300 tracking-wide rounded-md
+                  className={`block w-full text-center py-3 px-6 text-base font-semibold rounded-md transition-all duration-300 tracking-wide
                     ${
                       active === item
                         ? "bg-pink-500 text-white"
